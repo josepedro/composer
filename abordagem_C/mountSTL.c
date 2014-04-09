@@ -11,13 +11,17 @@ void end_draw(FILE *arquivo){
 
 void draw_cube(FILE *arquivo){
 	float position[] = {4.000000,4.000000,4.000000};
-	
+	float position_b[] = {0.000000,4.000000,4.000000};
+	float position_c[] = {0.000000,4.000000,0.000000};
 
 	//Base face YZ
 	fprintf(arquivo,"facet normal -1.000000e+000 0.000000e+000 0.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 %.6fe+002\n\t\t",position[1],position[2]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 0.000000e+000\n\t\t",position[1]);
+	//b
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_b[0],position_b[1],position_b[2]);
+	//c
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_c[0],position_c[1],position_c[2]);
+	//a
 	fprintf(arquivo,"vertex 0.000000e+000 0.000000e+000 %.6fe+002\n\t\t",position[2]);
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
@@ -25,7 +29,8 @@ void draw_cube(FILE *arquivo){
 	fprintf(arquivo,"facet normal -1.000000e+000 0.000000e+000 0.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
 	fprintf(arquivo,"vertex 0.000000e+000 0.000000e+000 %.6fe+002\n\t\t",position[2]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 0.000000e+000\n\t\t",position[1]);
+	//c
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_c[0],position_c[1],position_c[2]);
 	fprintf(arquivo,"vertex 0.000000e+000 0.000000e+000 0.000000e+000\n\t\t");
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
@@ -34,7 +39,8 @@ void draw_cube(FILE *arquivo){
 	fprintf(arquivo,"facet normal 0.000000e+000 0.000000e+000 1.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
 	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position[0],position[1],position[2]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 %.6fe+002\n\t\t",position[1],position[2]);
+	//b
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_b[0],position_b[1],position_b[2]);
 	fprintf(arquivo,"vertex %.6fe+002 0.000000e+000 %.6fe+002\n\t\t",position[0],position[2]);
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
@@ -42,7 +48,8 @@ void draw_cube(FILE *arquivo){
 	fprintf(arquivo,"facet normal 0.000000e+000 0.000000e+000 1.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
 	fprintf(arquivo,"vertex %.6fe+002 0.000000e+000 %.6fe+002\n\t\t",position[0],position[2]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 %.6fe+002\n\t\t",position[1],position[2]);
+	//b
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_b[0],position_b[1],position_b[2]);
 	fprintf(arquivo,"vertex 0.000000e+000 0.000000e+000 %.6fe+002\n\t\t",position[2]);
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
@@ -67,7 +74,8 @@ void draw_cube(FILE *arquivo){
 	//Base face XY
 	fprintf(arquivo,"facet normal 0.000000e+000 0.000000e+000 -1.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 0.000000e+000\n\t\t",position[1]);
+	//c
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_c[0],position_c[1],position_c[2]);
 	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 0.000000e+000\n\t\t",position[0],position[1]);
 	fprintf(arquivo,"vertex 0.000000e+000 0.000000e+000 0.000000e+000\n\t\t");
 	fprintf(arquivo,"endloop\n\t");
@@ -86,15 +94,18 @@ void draw_cube(FILE *arquivo){
 	fprintf(arquivo,"outer loop\n\t\t");
 	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position[0],position[1],position[2]);
 	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 0.000000e+000\n\t\t",position[0],position[1]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 %.6fe+002\n\t\t",position[1],position[2]);
+	//b
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_b[0],position_b[1],position_b[2]);
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
 	
 	fprintf(arquivo,"facet normal 0.000000e+000 1.000000e+000 0.000000e+000\n\t\t");
 	fprintf(arquivo,"outer loop\n\t\t");
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 %.6fe+002\n\t\t",position[1],position[2]);
+	//b
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_b[0],position_b[1],position_b[2]);
 	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 0.000000e+000\n\t\t",position[0],position[1]);
-	fprintf(arquivo,"vertex 0.000000e+000 %.6fe+002 0.000000e+000\n\t\t",position[1]);
+	//c
+	fprintf(arquivo,"vertex %.6fe+002 %.6fe+002 %.6fe+002\n\t\t",position_c[0],position_c[1],position_c[2]);
 	fprintf(arquivo,"endloop\n\t");
 	fprintf(arquivo,"endfacet\n\t");
 	
