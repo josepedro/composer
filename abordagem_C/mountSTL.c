@@ -9,7 +9,7 @@ void end_draw(FILE *arquivo){
 	fprintf(arquivo,"endsolid");
 }
 
-void draw_cube(FILE *arquivo, float positionX, float positionY, float positionZ, float height){
+void draw_cube(FILE *arquivo){
 	float position[] = {4.000000,4.000000,4.000000};
 	
 
