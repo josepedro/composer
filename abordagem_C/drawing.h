@@ -8,19 +8,22 @@ void end_draw(FILE *arquivo){
     fprintf(arquivo,"endsolid");
 }
 
-void draw_rectangle(FILE *arquivo, float point_x, float point_y, float point_z, float height){
+//Resolution minimun = 0.03; resolution in milimeter
+void draw_rectangle(FILE *arquivo, float point_x, float point_y, float point_z, float height, float resolution){
+    resolution = resolution * 100;
+    resolution = resolution/2;
     height = 2*height;
-    float position_a[] = {(-5.000000)+point_x,(-5.000000)+point_y,(5.000000*height)+point_z};
+    float position_a[] = {(-resolution)+point_x,(-resolution)+point_y,(resolution*height)+point_z};
     float position_b[] =
-{(-5.000000)+point_x,(5.000000)+point_y,(5.000000*height)+point_z};
-    float position_c[] = {(-5.000000)+point_x,(5.000000)+point_y,(-5.000000)+point_z};
-    float position_d[] = {(-5.000000)+point_x,(-5.000000)+point_y,(-5.000000)+point_z};
+{(-resolution)+point_x,(resolution)+point_y,(resolution*height)+point_z};
+    float position_c[] = {(-resolution)+point_x,(resolution)+point_y,(-resolution)+point_z};
+    float position_d[] = {(-resolution)+point_x,(-resolution)+point_y,(-resolution)+point_z};
     float position_e[] =
-{(5.000000)+point_x,(-5.000000)+point_y,(5.000000*height)+point_z};
+{(resolution)+point_x,(-resolution)+point_y,(resolution*height)+point_z};
     float position_f[] =
-{(5.000000)+point_x,(5.000000)+point_y,(5.000000*height)+point_z};
-    float position_g[] = {(5.000000)+point_x,(5.000000)+point_y,(-5.000000)+point_z};
-    float position_h[] = {(5.000000)+point_x,(-5.000000)+point_y,(-5.000000)+point_z};
+{(resolution)+point_x,(resolution)+point_y,(resolution*height)+point_z};
+    float position_g[] = {(resolution)+point_x,(resolution)+point_y,(-resolution)+point_z};
+    float position_h[] = {(resolution)+point_x,(-resolution)+point_y,(-resolution)+point_z};
 
     //Base face YZ
     fprintf(arquivo,"facet normal -1.000000e+000 0.000000e+000 0.000000e+000\n\t\t");
