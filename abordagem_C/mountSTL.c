@@ -66,6 +66,11 @@ void draw_signal_sum(){
 	fclose(arquivo);
 }
 
+void draw_figure_5x5_cm(int matrix_figure[5][5]){
+    
+
+}
+
 int main(){
 	draw_cube_20mm();
 	draw_signal_sum();	
@@ -73,3 +78,8 @@ int main(){
 
 	return 0;
 }
+
+/*255 - 3
+  x   - y
+255y = 3x
+y = (3/255)x*/
