@@ -35,7 +35,7 @@ void draw_cube_20mm(){
 }
 
 void draw_signal_sum(){
-	int width = 5; //20 mm or 2 cm; 10 = 1 mm; 1 = 0.1 mm with 0.1 mm resolution
+	int width = 5; //5cmX5cm
 	int roof = 3;
     int ground = 0.5;
 	int band = width * 20/100;
@@ -56,9 +56,11 @@ void draw_signal_sum(){
         	else{
         		draw_rectangle(arquivo, drawX, drawY, 0, ground, 10);
         	}
+            printf("\n\t\titeratorX: %d", iteratorX);
             drawX = drawX + 1.000000*1000;
         }
         drawX = 0;
+        printf("\n\titeratorY: %d", iteratorY);
        drawY = drawY + 1.000000*1000;
     } 
 
@@ -66,16 +68,63 @@ void draw_signal_sum(){
 	fclose(arquivo);
 }
 
+
 void draw_figure_5x5_cm(int matrix_figure[5][5]){
-    
+ 	int width = 5; //figure with dimension 5cmx5cm
+	int roof = 3;
+    int ground = 0.5;
+	int band = width * 20/100;
+	int limit_less = (width - band)/2;
+	int limit_upper = width - limit_less;
+	FILE *arquivo;
+	arquivo = fopen("figure_5X5.stl","w");
+	begin_draw(arquivo);
+    int iteratorY;
+    int iteratorX;
+    int drawY = 0;
+    int drawX = 0;
+    for(iteratorY = 0; iteratorY < width; iteratorY++){
+        for(iteratorX = 0; iteratorX < width; iteratorX++){
+        	
+            draw_rectangle(arquivo, drawX, drawY, 0, ((matrix_figure[iteratorX][iteratorY])/102 + 0.5), 10);
+        
+            drawX = drawX + 1.000000*1000;
+        }
+        drawX = 0;
+       drawY = drawY + 1.000000*1000;
+    } 
+
+	end_draw(arquivo);
+	fclose(arquivo);   
 
 }
 
 int main(){
+    int matrix_figure[5][5];
+    //Drawing the points of matrix
+    /*matrix_figure[0][4] = 255; matrix_figure[1][4] = 0; matrix_figure[2][4] = 0; matrix_figure[3][4] = 0; matrix_figure[4][4] = 255;
+    matrix_figure[0][3] = 0; matrix_figure[1][3] = 255; matrix_figure[2][3] = 128; matrix_figure[3][3] = 255; matrix_figure[4][3] = 0;
+    matrix_figure[0][2] = 0; matrix_figure[1][2] = 128; matrix_figure[2][2] = 255; matrix_figure[3][2] = 128; matrix_figure[4][2] = 0;
+    matrix_figure[0][1] = 0; matrix_figure[1][1] = 255; matrix_figure[2][1] = 128; matrix_figure[3][1] = 255; matrix_figure[4][1] = 0;
+    matrix_figure[0][0] = 255; matrix_figure[1][0] = 0; matrix_figure[2][0] = 0; matrix_figure[3][0] = 0; matrix_figure[4][0] = 255;
+    */
+
+    //Drawing figure 2
+    matrix_figure[0][4] = 64; matrix_figure[1][4] = 64; matrix_figure[2][4] = 64; matrix_figure[3][4] = 64; matrix_figure[4][4] = 64;
+    matrix_figure[0][3] = 64; matrix_figure[1][3] = 128; matrix_figure[2][3] = 128; matrix_figure[3][3] = 128; matrix_figure[4][3] = 64;
+    matrix_figure[0][2] = 64; matrix_figure[1][2] = 128; matrix_figure[2][2] = 255; matrix_figure[3][2] = 128; matrix_figure[4][2] = 64;
+    matrix_figure[0][1] = 64; matrix_figure[1][1] = 128; matrix_figure[2][1] = 128; matrix_figure[3][1] = 128; matrix_figure[4][1] = 64;
+    matrix_figure[0][0] = 64; matrix_figure[1][0] = 64; matrix_figure[2][0] = 64; matrix_figure[3][0] = 64; matrix_figure[4][0] = 64;
+
+    
+
+    draw_figure_5x5_cm(matrix_figure);         
+
+
 	draw_cube_20mm();
 	draw_signal_sum();	
 
-
+    printf("\n\n\tFIM\n\n");
 	return 0;
 }
 
