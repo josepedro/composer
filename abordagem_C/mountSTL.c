@@ -110,12 +110,24 @@ int main(){
     */
 
     //Drawing figure 2
-    matrix_figure[0][4] = 64; matrix_figure[1][4] = 64; matrix_figure[2][4] = 64; matrix_figure[3][4] = 64; matrix_figure[4][4] = 64;
+    /*matrix_figure[0][4] = 64; matrix_figure[1][4] = 64; matrix_figure[2][4] = 64; matrix_figure[3][4] = 64; matrix_figure[4][4] = 64;
     matrix_figure[0][3] = 64; matrix_figure[1][3] = 128; matrix_figure[2][3] = 128; matrix_figure[3][3] = 128; matrix_figure[4][3] = 64;
     matrix_figure[0][2] = 64; matrix_figure[1][2] = 128; matrix_figure[2][2] = 255; matrix_figure[3][2] = 128; matrix_figure[4][2] = 64;
     matrix_figure[0][1] = 64; matrix_figure[1][1] = 128; matrix_figure[2][1] = 128; matrix_figure[3][1] = 128; matrix_figure[4][1] = 64;
     matrix_figure[0][0] = 64; matrix_figure[1][0] = 64; matrix_figure[2][0] = 64; matrix_figure[3][0] = 64; matrix_figure[4][0] = 64;
+*/
 
+    FILE *figura_leitura;
+    figura_leitura = fopen("figure.txt","r");
+    //printf("%c\n", fgetc(figura_leitura));
+    //int a,b,c,d,e;
+    //fscanf(figura_leitura,"%d %d %d %d %d\n", &a, &b, &c, &d, &e);
+    //printf("%d %d %d %d %d\n",a,b,c,d,e);
+    int i;
+    for (i = 4; i >= 0; i--)
+    {
+        fscanf(figura_leitura,"%d %d %d %d %d\n", &matrix_figure[0][i], &matrix_figure[1][i], &matrix_figure[2][i], &matrix_figure[3][i], &matrix_figure[4][i]);
+    }
     
 
     draw_figure_5x5_cm(matrix_figure);         
