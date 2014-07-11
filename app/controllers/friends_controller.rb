@@ -28,7 +28,7 @@ class FriendsController < ApplicationController
 
     respond_to do |format|
       if @friend.save
-        format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
+        format.html { redirect_to @friend, notice: 'Imagem adicionada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @friend }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
-        format.html { redirect_to @friend, notice: 'Friend was successfully updated.' }
+        format.html { redirect_to @friend, notice: 'Imagem atualizada.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,6 +59,11 @@ class FriendsController < ApplicationController
       format.html { redirect_to friends_url }
       format.json { head :no_content }
     end
+  end
+
+  def download_stl
+    
+    
   end
 
   private
