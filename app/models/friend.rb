@@ -11,10 +11,12 @@ class Friend < ActiveRecord::Base
   }, :url => "/assets/products/:id/:style/image.:extension",
   :path => ":rails_root/public/assets/products/:id/:style/image.:extension"
 
-  def image_stl
+  def image_stl(image_id)
   	puts "a"*100
-  	image_path = "public/assets/products/" + Friend.last.id.to_s + "/original/image.jpg"
-    stl_path = "public/assets/products/" + Friend.last.id.to_s + "/original/image.stl"
+    puts image_id
+  	image_path = "public/assets/products/" + image_id + "/original/image.jpg"
+    puts image_path
+    stl_path = "public/assets/products/" + image_id + "/original/image.stl"
     converter_stl = Convert_STL.new(image_path, stl_path)
   	puts "a"*100
   end
