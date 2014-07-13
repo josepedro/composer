@@ -8,7 +8,7 @@ class Friend < ActiveRecord::Base
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
-  }, :url => "/assets/products/:id/:style/image.:extension",
+  },:storage => :s3,:bucket  => ENV['aart'], :url => "/assets/products/:id/:style/image.:extension",
   :path => ":rails_root/public/assets/products/:id/:style/image.:extension"
 
   def image_stl(image_id)
