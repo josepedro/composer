@@ -20,17 +20,16 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
-    send_file Rails.root.join('private', 'Rogelio Alvarado Vilchis.pdf'), :type=>"application/pdf", :x_sendfile=>true
+    image_id = @friend.id.to_s
+    @friend.image_stl(image_id)
+
+    send_file Rails.root.join('', 'figure_5X5.stl'), :type=>"application/stl", :x_sendfile=>true
   end
 
   # POST /friends
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
-    #puts Friend.last.id
-    @friend.image_stl
-
-
     respond_to do |format|
       if @friend.save
         format.html { redirect_to @friend, notice: 'Imagem adicionada com sucesso.' }
