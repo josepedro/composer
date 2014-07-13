@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 
 gem 'paperclip', '~> 3.0'
 
+#including assets 
+gem 'rails_12factor', group: :production
