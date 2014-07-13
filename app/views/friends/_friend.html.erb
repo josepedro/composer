@@ -9,9 +9,8 @@
     <span class="friend-name"><%= friend.name %></span>
     <div class="actions">
       <%= link_to 'Ver', friend %>
-      <%= link_to 'Editar', edit_friend_path(friend) %>
-      <%= link_to 'Deletar', friend, confirm: 'Are you sure you want to lose a friend?', method: :delete, class: 'destroy' %>
-      <%= link_to 'Baixar STL', friend %>
+      <%= link_to 'Download STL', edit_friend_path(friend) %>
+      <%= link_to 'Deletar', friend, confirm: 'Tem certeza que quer deletar?', method: :delete, class: 'destroy' %>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ class FriendsController < ApplicationController
   # GET /friends/1
   # GET /friends/1.json
   def show
+
   end
 
   # GET /friends/new
@@ -19,12 +20,16 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
+    send_file Rails.root.join('private', 'Rogelio Alvarado Vilchis.pdf'), :type=>"application/pdf", :x_sendfile=>true
   end
 
   # POST /friends
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
+    #puts Friend.last.id
+    @friend.image_stl
+
 
     respond_to do |format|
       if @friend.save
@@ -61,9 +66,9 @@ class FriendsController < ApplicationController
     end
   end
 
+  helper_method :download_stl
   def download_stl
-    
-    
+    puts "Deu certo esse carai"
   end
 
   private

@@ -4,7 +4,7 @@
   <%= image_tag @friend.avatar.url(:medium) %>
 
 <div class="show actions">
-  <%= link_to 'Editar', edit_friend_path(@friend) %>
+  <%= link_to 'Download STL', edit_friend_path(@friend) %>
   <%= link_to 'Remover', @friend, data: { confirm: 'Tem certeza que deseja remover a imagem?' }, method: :delete, class: 'destroy' %>
   <%= link_to 'Menu inicial', friends_path %>
 </div>
