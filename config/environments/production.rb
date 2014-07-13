@@ -83,9 +83,9 @@ PaperclipDemo::Application.configure do
     :storage => :s3,
     :s3_protocol => 'http',
     :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :bucket => ENV['aart'],
+      :access_key_id => ENV['AKIAJACQKU6M4E3EARAQ'],
+      :secret_access_key => ENV['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']
     }
   }
 end
