@@ -8,13 +8,14 @@ class Friend < ActiveRecord::Base
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
-  }, :url => "/assets/products/:id/:style/:basename.:extension",
-  :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
+  }, :url => "/assets/products/:id/:style/image.:extension",
+  :path => ":rails_root/public/assets/products/:id/:style/image.:extension"
 
   def image_stl
   	puts "a"*100
-  	image_path = "public/assets/products/" + Friend.last.id.to_s + "/original/_.jpg"
-    converter_stl = Convert_STL.new(image_path)
+  	image_path = "public/assets/products/" + Friend.last.id.to_s + "/original/image.jpg"
+    stl_path = "public/assets/products/" + Friend.last.id.to_s + "/original/image.stl"
+    converter_stl = Convert_STL.new(image_path, stl_path)
   	puts "a"*100
   end
 
