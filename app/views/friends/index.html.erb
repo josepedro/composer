@@ -3,3 +3,8 @@
 <section id="friends">
   <%= render @friends %>
 </section>
+
+<h2>Adicione a sequência de sons:</h2>
+<% @friends.each do |friend| %>
+  <p><%= friend.name %></p>
+<% end %>
