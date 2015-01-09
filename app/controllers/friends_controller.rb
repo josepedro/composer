@@ -21,15 +21,15 @@ class FriendsController < ApplicationController
   # GET /friends/1/edit
   def edit
     image_id = @friend.id.to_s
-    @friend.image_stl(image_id)
 
-    send_file Rails.root.join('', 'figure_5X5.stl'), :type=>"application/stl", :x_sendfile=>true
   end
 
   # POST /friends
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
+    puts "+"*100
+    puts @friend.songurl
     respond_to do |format|
       if @friend.save
         format.html { redirect_to @friend, notice: 'Imagem adicionada com sucesso.' }
@@ -78,6 +78,6 @@ class FriendsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def friend_params
-      params.require(:friend).permit(:avatar, :name)
+      params.require(:friend).permit(:avatar, :name, :songurl)
     end
 end

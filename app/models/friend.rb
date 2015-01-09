@@ -3,17 +3,14 @@ class Friend < ActiveRecord::Base
   validates :avatar,
     attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
     attachment_size: { less_than: 5.megabytes }
+  validates :songurl, presence: true
+
 
   has_attached_file :avatar, styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
-  },:storage => :s3,:bucket  => ENV['aart'],:s3_credentials => {
-                    :access_key_id => ENV['AKIAJACQKU6M4E3EARAQ'],
-                    :secret_access_key => ENV['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']
-                },
-                :s3_permissions => 'private',
-                :url => "aart.s3.amazonaws.com"
+  }
 
   def image_stl(image_id)
   	puts "a"*100

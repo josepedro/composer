@@ -7,9 +7,14 @@
 
   <div class="back">
     <span class="friend-name"><%= friend.name %></span>
+    <span class="friend-songurl"><%= friend.songurl %></span>
+
     <div class="actions">
       <%= link_to 'Ver', friend %>
-      <%= link_to 'Download STL', edit_friend_path(friend) %>
+      <audio id=<%= friend.name %> src=<%= friend.songurl %> type="audio/wav"></audio>
+      <div>
+        <button onclick="document.getElementById('<%= friend.name %>').play()">Reproduzir o áudio</button>
+      </div>
       <%= link_to 'Deletar', friend, confirm: 'Tem certeza que quer deletar?', method: :delete, class: 'destroy' %>
     </div>
   </div>
