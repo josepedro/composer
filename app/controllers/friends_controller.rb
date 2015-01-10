@@ -5,6 +5,44 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     @friends = Friend.all
+    string_comparator = ""
+    
+    @friends.each do |friend|
+      string_comparator = string_comparator + friend.name
+    end
+
+    if params[:first] != nil && params[:second] != nil && params[:third] != nil
+      if string_comparator.include? params[:first]
+        if string_comparator.include? params[:second]
+          if string_comparator.include? params[:third]
+            puts "+"*80
+            puts "Parametros são válidos"
+            
+            Net::HTTP.start("104.236.78.53") { |http|
+              resp = http.get("/"+params[:first]+".wav")
+              open("musics/first.wav", "wb") { |file|
+                file.write(resp.body)
+              }
+            }
+            Net::HTTP.start("104.236.78.53") { |http|
+              resp = http.get("/"+params[:second]+".wav")
+              open("musics/second.wav", "wb") { |file|
+                file.write(resp.body)
+              }
+            }
+            Net::HTTP.start("104.236.78.53") { |http|
+              resp = http.get("/"+params[:third]+".wav")
+              open("musics/third.wav", "wb") { |file|
+                file.write(resp.body)
+              }
+            }
+
+            
+          end
+        end
+      end
+    end
+
   end
 
   # GET /friends/1

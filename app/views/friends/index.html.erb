@@ -4,7 +4,15 @@
   <%= render @friends %>
 </section>
 
-<h2>Adicione a sequência de sons:</h2>
-<% @friends.each do |friend| %>
-  <p><%= friend.name %></p>
+<h3>Adicione o nome dos sons na sequência desejada para ser montada:</h3>
+<%= form_tag friends_path, :method => 'get', :id => "register-form" do %>
+  <p>
+  	<%= label_tag("Primeira parte:") %>
+    <%= text_field_tag :first, params[:first] %>
+    <%= label_tag("Segunda parte:") %>
+    <%= text_field_tag :second, params[:second] %>
+    <%= label_tag("Terceira parte:") %>
+    <%= text_field_tag :third, params[:third] %>
+    <%= submit_tag "Montar e Baixar", :name => nil %>
+  </p>
 <% end %>
