@@ -1,3 +1,5 @@
+include WaveFile
+
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
@@ -11,33 +13,28 @@ class FriendsController < ApplicationController
       string_comparator = string_comparator + friend.name
     end
 
-    if params[:first] != nil && params[:second] != nil && params[:third] != nil
+    puts "+"*80
+            puts "Parametros são válidos"
+
+    if params[:first] != nil && params[:second] != nil && params[:third] != nil && params[:fourth] != nil
       if string_comparator.include? params[:first]
         if string_comparator.include? params[:second]
           if string_comparator.include? params[:third]
-            puts "+"*80
-            puts "Parametros são válidos"
-            
-            Net::HTTP.start("104.236.78.53") { |http|
-              resp = http.get("/"+params[:first]+".wav")
-              open("musics/first.wav", "wb") { |file|
-                file.write(resp.body)
-              }
-            }
-            Net::HTTP.start("104.236.78.53") { |http|
-              resp = http.get("/"+params[:second]+".wav")
-              open("musics/second.wav", "wb") { |file|
-                file.write(resp.body)
-              }
-            }
-            Net::HTTP.start("104.236.78.53") { |http|
-              resp = http.get("/"+params[:third]+".wav")
-              open("musics/third.wav", "wb") { |file|
-                file.write(resp.body)
-              }
-            }
+            if string_comparator.include? params[:fourth]
+              puts "+"*80
+              puts "Parametros são válidos"
+              
+              files_to_append = ["/var/www/"+params[:first]+".wav", "/var/www/"+params[:second]+".wav", "/var/www/"+params[:third]+".wav", "/var/www/"+params[:fourth]+".wav"]
+              samples_per_buffer = 4096
 
-            
+              Writer.new("/var/www/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+                files_to_append.each do |file_name|
+                  Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+                    writer.write(buffer)
+                  end
+                end
+              end
+            end
           end
         end
       end

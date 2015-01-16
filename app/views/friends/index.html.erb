@@ -13,6 +13,12 @@
     <%= text_field_tag :second, params[:second] %>
     <%= label_tag("Terceira parte:") %>
     <%= text_field_tag :third, params[:third] %>
-    <%= submit_tag "Montar e Baixar", :name => nil %>
+    <%= label_tag("Quarta parte:") %>
+    <%= text_field_tag :fourth, params[:fourth] %>
+    <%= submit_tag "Montar", :name => nil %>
   </p>
 <% end %>
+<audio id="audio" src="http://localhost/audio.wav" type="audio/wav"></audio>
+<div>
+  <button onclick="document.getElementById('audio').play()">Reproduzir o áudio da montagem</button>
+</div>

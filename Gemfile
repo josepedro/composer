@@ -46,3 +46,5 @@ gem 'rails_12factor', group: :production
 
 #AWS-SDK, upload image
 gem 'aws-sdk'
+
+gem 'wavefile'
