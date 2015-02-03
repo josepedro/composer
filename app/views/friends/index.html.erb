@@ -1,3 +1,5 @@
+
+
 <h2><%= link_to 'Nova faixa de áudio', new_friend_path, class: 'new-friend' %></h2>
 
 <section id="friends">
@@ -22,3 +24,140 @@
 <div>
   <button onclick="document.getElementById('audio').play()">Reproduzir o áudio da montagem</button>
 </div>
+
+
+<style>
+.column.over {
+  border: 2px dashed #000;
+}
+</style>
+
+<p id="demo"></p>
+
+<div id="columns">
+  <div class="column" draggable="true"><header>A</header></div>
+  <div class="column" draggable="true"><header>B</header></div>
+  <div class="column" draggable="true"><header>C</header></div>
+</div>
+
+<style>
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.column {
+  height: 150px;
+  width: 150px;
+  float: left;
+  border: 2px solid #666666;
+  background-color: #ccc;
+  margin-right: 5px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+}
+.column header {
+  color: #fff;
+  text-shadow: #000 0 1px;*
+  box-shadow: 5px;
+  padding: 5px;
+  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -webkit-gradient(linear, left top, right top,
+                               color-stop(0, rgb(0,0,0)),
+                               color-stop(0.50, rgb(79,79,79)),
+                               color-stop(1, rgb(21,21,21)));
+  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  border-bottom: 1px solid #ddd;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -ms-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+
+.column.moving {
+  opacity: 0.25;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+}
+</style>
+
+<script type="text/javascript">
+
+  var dragSrcEl = null;
+  var opacity_element = null;
+
+  function handleDragStart(event) {
+    opacity_element = event.target.style.opacity;
+    event.target.style.opacity = '0.4';
+    dragSrcEl = event.target;
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/html', event.target.innerHTML);
+    event.target.classList.add('moving');
+  }
+
+  function handleDragOver(event){
+    if (event.preventDefault) {
+      event.preventDefault(); // Allows us to drop
+    }
+    event.dataTransfer.dropEffect = 'move'; // See the effect lines borders
+    return false;
+  }
+
+  function handleDragEnter(event){
+    event.target.classList.add('over');
+  }
+
+  function handleDragLeave(event){
+
+    event.target.classList.remove('over');
+  }
+
+  function handleDrop(event){
+    document.getElementById("demo").innerHTML = "Started to drag the p element";
+    if (event.stopPropagation) {
+      event.stopPropagation();
+    }
+    if (dragSrcEl != event.target) {
+      dragSrcEl.innerHTML = event.target.innerHTML;
+      event.target.innerHTML = event.dataTransfer.getData('text/html');
+    }
+    return false;
+  }
+
+  function handleDragEnd(event){
+    event.target.style.opacity = opacity_element;
+    [].forEach.call(cols, function(col){
+      col.classList.remove('over');
+      event.target.classList.remove('moving');
+    });
+  }
+
+  var cols = document.querySelectorAll('#columns .column');
+  [].forEach.call(cols, function(col) {
+    col.addEventListener('dragstart', handleDragStart, false);
+    col.addEventListener('dragenter', handleDragEnter, false)
+    col.addEventListener('dragover', handleDragOver, false);
+    col.addEventListener('dragleave', handleDragLeave, false);
+    col.addEventListener('drop', handleDrop, false);
+    col.addEventListener('dragend', handleDragEnd, false);
+  });
+</script>
