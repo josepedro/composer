@@ -1,24 +1,46 @@
 <h2><%= link_to 'Nova faixa de áudio', new_friend_path, class: 'new-friend' %></h2>
 
+<%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm", :onsubmit => "return validateForm()", :action => "demo_form.asp" do %>
 <section id="friends">
   <%= render @friends %>
 </section>
+<%= submit_tag "Mix", :name => nil, id: "mix" %>
 
-<h3>Adicione o nome dos sons na sequência desejada para ser montada:</h3>
-<%= form_tag friends_path, :method => 'get', :id => "register-form" do %>
-  <p>
-  	<%= label_tag("Primeira parte:") %>
-    <%= text_field_tag :first, params[:first] %>
-    <%= label_tag("Segunda parte:") %>
-    <%= text_field_tag :second, params[:second] %>
-    <%= label_tag("Terceira parte:") %>
-    <%= text_field_tag :third, params[:third] %>
-    <%= label_tag("Quarta parte:") %>
-    <%= text_field_tag :fourth, params[:fourth] %>
-    <%= submit_tag "Montar", :name => nil %>
-  </p>
 <% end %>
-<audio id="audio" src="http://localhost/audio.wav" type="audio/wav"></audio>
-<div>
-  <button onclick="document.getElementById('audio').play()">Reproduzir o áudio da montagem</button>
-</div>
+<script type="text/javascript">
+  function validateForm() {
+    var x1 = document.forms["myForm"]["<%= @friends[0].name %>"].value;
+    console.log(x1);
+    var x2 = document.forms["myForm"]["<%= @friends[1].name %>"].value;
+    var x3 = document.forms["myForm"]["<%= @friends[2].name %>"].value;
+    var x4 = document.forms["myForm"]["<%= @friends[3].name %>"].value;
+    if ((x1 ==1 || x1 ==2 || x1 ==3 || x1 ==4) &&
+        (x2 ==1 || x2 ==2 || x2 ==3 || x2 ==4) &&
+        (x3 ==1 || x3 ==2 || x3 ==3 || x3 ==4) &&
+        (x4 ==1 || x4 ==2 || x4 ==3 || x4 ==4) &&
+        x1 !=x2 && x1 !=x3 && x1 !=x4 && x2 !=x3 &&
+        x2 !=x4 && x3 !=x4) {
+      return true;
+    }else{
+      alert("The fields must be a number in 1 to 4 and must have different from each other.");
+      return false;
+    }
+  }
+</script>
+<style type="text/css">
+  #mix{
+    margin-top : 10px;
+    width: 800px;
+    margin-left: 0px;
+  }
+</style>
+<audio controls id="mixedaudio">
+  <source src="http://localhost/audio.wav" type="audio/wav">
+</audio>
+
+<style type="text/css">
+  #mixedaudio{
+    margin-top: 5px;
+    width: 800px;
+  }
+</style>

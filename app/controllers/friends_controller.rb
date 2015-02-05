@@ -7,38 +7,30 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     @friends = Friend.all
-    string_comparator = ""
-    
-    @friends.each do |friend|
-      string_comparator = string_comparator + friend.name
-    end
 
     puts "+"*80
-            puts "Parametros são válidos"
+    puts "Parametros são válidos"
+    puts params[:"Heitor_6a"]
+    formation_audio = params
+    puts formation_audio.key("4")
 
-    if params[:first] != nil && params[:second] != nil && params[:third] != nil && params[:fourth] != nil
-      if string_comparator.include? params[:first]
-        if string_comparator.include? params[:second]
-          if string_comparator.include? params[:third]
-            if string_comparator.include? params[:fourth]
-              puts "+"*80
-              puts "Parametros são válidos"
-              
-              files_to_append = ["/var/www/"+params[:first]+".wav", "/var/www/"+params[:second]+".wav", "/var/www/"+params[:third]+".wav", "/var/www/"+params[:fourth]+".wav"]
-              samples_per_buffer = 4096
+    files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
+      "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
+      formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+    samples_per_buffer = 4096
 
-              Writer.new("/var/www/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
-                files_to_append.each do |file_name|
-                  Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
-                    writer.write(buffer)
-                  end
-                end
-              end
-            end
-          end
+    Writer.new("/var/www/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+      files_to_append.each do |file_name|
+        Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+          writer.write(buffer)
         end
       end
     end
+
+    
+
+
+    
 
   end
 
