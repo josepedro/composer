@@ -1,4 +1,4 @@
-<h2><%= link_to 'Nova faixa de áudio', new_friend_path, class: 'new-friend' %></h2>
+<!--<h2><%= link_to 'Nova faixa de áudio', new_friend_path, class: 'new-friend' %></h2>-->
 
 <%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm", :onsubmit => "return validateForm()", :action => "demo_form.asp" do %>
 <section id="friends">
@@ -27,6 +27,7 @@
     }
   }
 </script>
+
 <style type="text/css">
   #mix{
     margin-top : 10px;
@@ -35,7 +36,7 @@
   }
 </style>
 <audio controls id="mixedaudio">
-  <source src="http://localhost/audio.wav" type="audio/wav">
+  <source src="http://104.236.78.53/audio.wav" type="audio/wav">
 </audio>
 
 <style type="text/css">

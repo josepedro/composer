@@ -14,17 +14,19 @@ class FriendsController < ApplicationController
     formation_audio = params
     puts formation_audio.key("4")
 
-    files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
-      "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
-      formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+    if params[:"Heitor_6a"] != nil
+    files_to_append = ["/var/www/html/"+formation_audio.key("1")+".wav", 
+      "/var/www/html/"+formation_audio.key("2")+".wav", "/var/www/html/"+
+      formation_audio.key("3")+".wav", "/var/www/html/"+formation_audio.key("4")+".wav"]
     samples_per_buffer = 4096
 
-    Writer.new("/var/www/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+    Writer.new("/var/www/html/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
       files_to_append.each do |file_name|
         Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
           writer.write(buffer)
         end
       end
+    end
     end
 
     
