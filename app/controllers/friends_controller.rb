@@ -14,23 +14,76 @@ class FriendsController < ApplicationController
     formation_audio = params
     puts formation_audio.key("4")
 
-    files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
-      "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
-      formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
-    samples_per_buffer = 4096
+    if formation_audio[:"Heitor_6a"] != nil
+      files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
+        "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
+        formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
 
-    Writer.new("/var/www/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
-      files_to_append.each do |file_name|
-        Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
-          writer.write(buffer)
+      puts files_to_append
+
+      Writer.new("/var/www/audioHeitor.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
         end
       end
     end
 
-    
+    puts params[:"Cseko_1a"]
+    if formation_audio[:"Cseko_1a"] != nil
+      files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
+        "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
+        formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
 
+      puts files_to_append
 
-    
+      Writer.new("/var/www/audioCseko.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
+
+    puts params[:"Seincman_4a"]
+    if formation_audio[:"Seincman_4a"] != nil
+      files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
+        "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
+        formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
+
+      puts files_to_append
+
+      Writer.new("/var/www/audioSeincman.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
+
+    puts params[:"Zampronha_5a"]
+    if formation_audio[:"Zampronha_5a"] != nil
+      files_to_append = ["/var/www/"+formation_audio.key("1")+".wav", 
+        "/var/www/"+formation_audio.key("2")+".wav", "/var/www/"+
+        formation_audio.key("3")+".wav", "/var/www/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
+
+      puts files_to_append
+
+      Writer.new("/var/www/audioZampronha.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
 
   end
 
@@ -47,8 +100,19 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
-    image_id = @friend.id.to_s
-
+    if @friend == Friend.all[0]
+      send_file '/var/www/audioHeitor.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[4]
+      send_file '/var/www/audioCseko.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[8]
+      send_file '/var/www/audioSeincman.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[12]
+      send_file '/var/www/audioZampronha.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    
   end
 
   # POST /friends
@@ -92,9 +156,9 @@ class FriendsController < ApplicationController
     end
   end
 
-  helper_method :download_stl
-  def download_stl
-    puts "Deu certo esse carai"
+  helper_method :download
+  def download
+
   end
 
   private
