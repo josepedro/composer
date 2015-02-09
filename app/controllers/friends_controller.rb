@@ -19,8 +19,10 @@ class FriendsController < ApplicationController
       "/var/www/html/"+formation_audio.key("2")+".wav", "/var/www/html/"+
       formation_audio.key("3")+".wav", "/var/www/html/"+formation_audio.key("4")+".wav"]
     samples_per_buffer = 4096
+    
+    File.open('/var/www/html/report.txt', 'a+') { |file| file.write("\n"+Time.now.day.to_s+'-'+Time.now.month.to_s+'-'+Time.now.year.to_s+'_'+Time.now.hour.to_s+':'+Time.now.min.to_s+':'+Time.now.sec.to_s+" - \t"+formation_audio.key("1")+', '+formation_audio.key("2")+', '+formation_audio.key("3")+', '+formation_audio.key("4")) }    
 
-    Writer.new("/var/www/html/audio.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+    Writer.new("/var/www/html/audioHeitor.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
       files_to_append.each do |file_name|
         Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
           writer.write(buffer)
@@ -29,10 +31,62 @@ class FriendsController < ApplicationController
     end
     end
 
-    
+    puts params[:"Cseko_1a"]
+    if formation_audio[:"Cseko_1a"] != nil
+      files_to_append = ["/var/www/html/"+formation_audio.key("1")+".wav", 
+        "/var/www/html/"+formation_audio.key("2")+".wav", "/var/www/html/"+
+        formation_audio.key("3")+".wav", "/var/www/html/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
 
+       File.open('/var/www/html/report.txt', 'a+') { |file| file.write("\n"+Time.now.day.to_s+'-'+Time.now.month.to_s+'-'+Time.now.year.to_s+'_'+Time.now.hour.to_s+':'+Time.now.min.to_s+':'+Time.now.sec.to_s+" - \t"+formation_audio.key("1")+', '+formation_audio.key("2")+', '+formation_audio.key("3")+', '+formation_audio.key("4")) }
+      puts files_to_append
 
-    
+      Writer.new("/var/www/html/audioCseko.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
+
+    puts params[:"Seincman_4a"]
+    if formation_audio[:"Seincman_4a"] != nil
+      files_to_append = ["/var/www/html/"+formation_audio.key("1")+".wav", 
+        "/var/www/html/"+formation_audio.key("2")+".wav", "/var/www/html/"+
+        formation_audio.key("3")+".wav", "/var/www/html/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
+
+       File.open('/var/www/html/report.txt', 'a+') { |file| file.write("\n"+Time.now.day.to_s+'-'+Time.now.month.to_s+'-'+Time.now.year.to_s+'_'+Time.now.hour.to_s+':'+Time.now.min.to_s+':'+Time.now.sec.to_s+" - \t"+formation_audio.key("1")+', '+formation_audio.key("2")+', '+formation_audio.key("3")+', '+formation_audio.key("4")) }
+      puts files_to_append
+
+      Writer.new("/var/www/html/audioSeincman.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
+
+    puts params[:"Zampronha_5a"]
+    if formation_audio[:"Zampronha_5a"] != nil
+      files_to_append = ["/var/www/html/"+formation_audio.key("1")+".wav", 
+        "/var/www/html/"+formation_audio.key("2")+".wav", "/var/www/html/"+
+        formation_audio.key("3")+".wav", "/var/www/html/"+formation_audio.key("4")+".wav"]
+      samples_per_buffer = 4096
+
+       File.open('/var/www/html/report.txt', 'a+') { |file| file.write("\n"+Time.now.day.to_s+'-'+Time.now.month.to_s+'-'+Time.now.year.to_s+'_'+Time.now.hour.to_s+':'+Time.now.min.to_s+':'+Time.now.sec.to_s+" - \t"+formation_audio.key("1")+', '+formation_audio.key("2")+', '+formation_audio.key("3")+', '+formation_audio.key("4")) }
+      puts files_to_append
+
+      Writer.new("/var/www/html/audioZampronha.wav", Format.new(:stereo, :pcm_16, 44100)) do |writer|
+        files_to_append.each do |file_name|
+          Reader.new(file_name).each_buffer(samples_per_buffer) do |buffer|
+            writer.write(buffer)
+          end
+        end
+      end
+    end
 
   end
 
@@ -49,8 +103,19 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
-    image_id = @friend.id.to_s
-
+    if @friend == Friend.all[0]
+      send_file '/var/www/html/audioHeitor.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[4]
+      send_file '/var/www/html/audioCseko.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[8]
+      send_file '/var/www/html/audioSeincman.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    if @friend == Friend.all[12]
+      send_file '/var/www/html/audioZampronha.wav', :type=>"application/wav", :x_sendfile=>true  
+    end
+    
   end
 
   # POST /friends
@@ -94,9 +159,9 @@ class FriendsController < ApplicationController
     end
   end
 
-  helper_method :download_stl
-  def download_stl
-    puts "Deu certo esse carai"
+  helper_method :download
+  def download
+
   end
 
   private

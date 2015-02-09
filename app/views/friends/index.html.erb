@@ -1,9 +1,125 @@
 <!--<h2><%= link_to 'Nova faixa de áudio', new_friend_path, class: 'new-friend' %></h2>-->
 
+<h1 id="division">Music 1</h1>
+<style type="text/css">
+  #division {
+    margin-top: 50px;
+  }
+</style>
 <%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm", :onsubmit => "return validateForm()", :action => "demo_form.asp" do %>
 <section id="friends">
-  <%= render @friends %>
+  
+   <!-- Third Figure-->
+  <div class="friend" id="<%= @friends[2].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[2].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[2].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[2].name}", params[:"#{@friends[2].name}"], id: "field", class: "field", name: "#{@friends[2].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+ <!-- First Figure-->
+  <div class="friend" id="<%= @friends[0].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[0].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[0].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[0].name}", params[:"#{@friends[0].name}"], id: "field", class: "field", name: "#{@friends[0].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Fourth Figure-->
+  <div class="friend" id="<%= @friends[3].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[3].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[3].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[3].name}", params[:"#{@friends[3].name}"], id: "field", class: "field", name: "#{@friends[3].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+  <!-- Second Figure-->
+  <div class="friend" id="<%= @friends[1].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[1].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[1].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[1].name}", params[:"#{@friends[1].name}"], id: "field", class: "field", name: "#{@friends[1].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!--End of First Music -->
 </section>
+
 <%= submit_tag "Mix", :name => nil, id: "mix" %>
 
 <% end %>
@@ -36,7 +152,7 @@
   }
 </style>
 <audio controls id="mixedaudio">
-  <source src="http://104.236.78.53/audio.wav" type="audio/wav">
+  <source src="http://104.236.78.53/audioHeitor.wav" type="audio/wav">
 </audio>
 
 <style type="text/css">
@@ -45,3 +161,506 @@
     width: 800px;
   }
 </style>
+
+<%= button_to "Save", edit_friend_path(@friends[0]), :method => :get, :id => "mix" %>
+
+<!--End of First Part -->
+
+
+<!--______________________________________________________________________________-->
+
+<h1 id="division">Music 2</h1>
+
+<%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm1", :onsubmit => "return validateForm1()", :action => "demo_form.asp" do %>
+<section id="friends">
+  
+
+  <!-- Third Figure-->
+  <div class="friend" id="<%= @friends[6].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[6].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[6].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[6].name}", params[:"#{@friends[6].name}"], id: "field", class: "field", name: "#{@friends[6].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+  <!-- Fourth Figure-->
+  <div class="friend" id="<%= @friends[7].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[7].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[7].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[7].name}", params[:"#{@friends[7].name}"], id: "field", class: "field", name: "#{@friends[7].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- First Figure-->
+  <div class="friend" id="<%= @friends[4].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[4].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[4].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[4].name}", params[:"#{@friends[4].name}"], id: "field", class: "field", name: "#{@friends[4].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Figure-->
+  <div class="friend" id="<%= @friends[5].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[5].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[5].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[5].name}", params[:"#{@friends[5].name}"], id: "field", class: "field", name: "#{@friends[5].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!--End of Second Music -->
+</section>
+
+<%= submit_tag "Mix", :name => nil, id: "mix" %>
+
+<% end %>
+<script type="text/javascript">
+  function validateForm1() {
+    var x1 = document.forms["myForm1"]["<%= @friends[4].name %>"].value;
+    console.log(x1);
+    var x2 = document.forms["myForm1"]["<%= @friends[5].name %>"].value;
+    var x3 = document.forms["myForm1"]["<%= @friends[6].name %>"].value;
+    var x4 = document.forms["myForm1"]["<%= @friends[7].name %>"].value;
+    if ((x1 ==1 || x1 ==2 || x1 ==3 || x1 ==4) &&
+        (x2 ==1 || x2 ==2 || x2 ==3 || x2 ==4) &&
+        (x3 ==1 || x3 ==2 || x3 ==3 || x3 ==4) &&
+        (x4 ==1 || x4 ==2 || x4 ==3 || x4 ==4) &&
+        x1 !=x2 && x1 !=x3 && x1 !=x4 && x2 !=x3 &&
+        x2 !=x4 && x3 !=x4) {
+      return true;
+    }else{
+      alert("The fields must be a number in 1 to 4 and must have different from each other.");
+      return false;
+    }
+  }
+</script>
+<style type="text/css">
+  #mix{
+    margin-top : 10px;
+    width: 800px;
+    margin-left: 0px;
+  }
+</style>
+<audio controls id="mixedaudio">
+  <source src="http://104.236.78.53/audioCseko.wav" type="audio/wav">
+</audio>
+
+<style type="text/css">
+  #mixedaudio{
+    margin-top: 5px;
+    width: 800px;
+  }
+</style>
+
+<%= button_to "Save", edit_friend_path(@friends[4]), :method => :get, :id => "mix" %>
+
+<!--End of Second Part -->
+
+
+<h1 id="division">Music 3</h1>
+
+<%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm2", :onsubmit => "return validateForm2()", :action => "demo_form.asp" do %>
+<section id="friends">
+  
+  <!-- Second Figure-->
+  <div class="friend" id="<%= @friends[9].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[9].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[9].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[9].name}", params[:"#{@friends[9].name}"], id: "field", class: "field", name: "#{@friends[9].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+ <!-- Fourth Figure-->
+  <div class="friend" id="<%= @friends[11].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[11].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[11].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[11].name}", params[:"#{@friends[11].name}"], id: "field", class: "field", name: "#{@friends[11].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+  <!-- First Figure-->
+  <div class="friend" id="<%= @friends[8].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[8].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[8].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[8].name}", params[:"#{@friends[8].name}"], id: "field", class: "field", name: "#{@friends[8].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Third Figure-->
+  <div class="friend" id="<%= @friends[10].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[10].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[10].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[10].name}", params[:"#{@friends[10].name}"], id: "field", class: "field", name: "#{@friends[10].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+   <!--End of Third Music -->
+</section>
+
+<%= submit_tag "Mix", :name => nil, id: "mix" %>
+
+<% end %>
+<script type="text/javascript">
+  function validateForm2() {
+    var x1 = document.forms["myForm2"]["<%= @friends[8].name %>"].value;
+    console.log(x1);
+    var x2 = document.forms["myForm2"]["<%= @friends[9].name %>"].value;
+    var x3 = document.forms["myForm2"]["<%= @friends[10].name %>"].value;
+    var x4 = document.forms["myForm2"]["<%= @friends[11].name %>"].value;
+    if ((x1 ==1 || x1 ==2 || x1 ==3 || x1 ==4) &&
+        (x2 ==1 || x2 ==2 || x2 ==3 || x2 ==4) &&
+        (x3 ==1 || x3 ==2 || x3 ==3 || x3 ==4) &&
+        (x4 ==1 || x4 ==2 || x4 ==3 || x4 ==4) &&
+        x1 !=x2 && x1 !=x3 && x1 !=x4 && x2 !=x3 &&
+        x2 !=x4 && x3 !=x4) {
+      return true;
+    }else{
+      alert("The fields must be a number in 1 to 4 and must have different from each other.");
+      return false;
+    }
+  }
+</script>
+<style type="text/css">
+  #mix{
+    margin-top : 10px;
+    width: 800px;
+    margin-left: 0px;
+  }
+</style>
+<audio controls id="mixedaudio">
+  <source src="http://104.236.78.53/audioSeincman.wav" type="audio/wav">
+</audio>
+
+<style type="text/css">
+  #mixedaudio{
+    margin-top: 5px;
+    width: 800px;
+  }
+</style>
+
+<%= button_to "Save", edit_friend_path(@friends[8]), :method => :get, :id => "mix" %>
+
+<!--End of Third Part -->
+
+
+
+<h1 id="division">Music 4</h1>
+
+<%= form_tag friends_path, :method => 'get', :id => "register-form", :name => "myForm3", :onsubmit => "return validateForm3()", :action => "demo_form.asp" do %>
+<section id="friends">
+
+
+  <!-- Second Figure-->
+  <div class="friend" id="<%= @friends[13].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[13].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[13].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[13].name}", params[:"#{@friends[13].name}"], id: "field", class: "field", name: "#{@friends[13].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+  
+  <!-- First Figure-->
+  <div class="friend" id="<%= @friends[12].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[12].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[12].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[12].name}", params[:"#{@friends[12].name}"], id: "field", class: "field", name: "#{@friends[12].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Fourth Figure-->
+  <div class="friend" id="<%= @friends[15].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[15].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[15].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[15].name}", params[:"#{@friends[15].name}"], id: "field", class: "field", name: "#{@friends[15].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+  <!-- Third Figure-->
+  <div class="friend" id="<%= @friends[14].id %>">
+    <div class="front" id="image" >
+      <%= image_tag @friends[14].avatar.url(:square)%>
+    </div>
+    <div class="back" id="image">
+        <audio controls id="audiofriend">
+          <source src="<%= @friends[14].songurl %>" type="audio/wav">
+        </audio>
+        <style type="text/css">
+          #audiofriend{
+            width: 160px;
+          }
+        </style> 
+        <strong><%= label_tag("Enumaration:") %></strong>>
+        <%= text_field_tag :"#{@friends[14].name}", params[:"#{@friends[14].name}"], id: "field", class: "field", name: "#{@friends[14].name}" %>
+        <style type="text/css">
+          #field {
+            margin-left: -30px; 
+            width: 20px;
+          }
+        </style>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+
+
+  <!--End of Fourth Music -->
+</section>
+
+<%= submit_tag "Mix", :name => nil, id: "mix" %>
+
+<% end %>
+<script type="text/javascript">
+  function validateForm3() {
+    var x1 = document.forms["myForm3"]["<%= @friends[12].name %>"].value;
+    console.log(x1);
+    var x2 = document.forms["myForm3"]["<%= @friends[13].name %>"].value;
+    var x3 = document.forms["myForm3"]["<%= @friends[14].name %>"].value;
+    var x4 = document.forms["myForm3"]["<%= @friends[15].name %>"].value;
+    if ((x1 ==1 || x1 ==2 || x1 ==3 || x1 ==4) &&
+        (x2 ==1 || x2 ==2 || x2 ==3 || x2 ==4) &&
+        (x3 ==1 || x3 ==2 || x3 ==3 || x3 ==4) &&
+        (x4 ==1 || x4 ==2 || x4 ==3 || x4 ==4) &&
+        x1 !=x2 && x1 !=x3 && x1 !=x4 && x2 !=x3 &&
+        x2 !=x4 && x3 !=x4) {
+      return true;
+    }else{
+      alert("The fields must be a number in 1 to 4 and must have different from each other.");
+      return false;
+    }
+  }
+</script>
+<style type="text/css">
+  #mix{
+    margin-top : 10px;
+    width: 800px;
+    margin-left: 0px;
+  }
+</style>
+<audio controls id="mixedaudio">
+  <source src="http://104.236.78.53/audioZampronha.wav" type="audio/wav">
+</audio>
+
+<style type="text/css">
+  #mixedaudio{
+    margin-top: 5px;
+    width: 800px;
+  }
+</style>
+
+<%= button_to "Save", edit_friend_path(@friends[12]), :method => :get, :id => "mix" %>
+
+<!--End of Fourth Part -->
+
+
